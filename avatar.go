@@ -7,6 +7,7 @@ import (
 	"os"
 	"strings"
 	"time"
+	"unicode/utf8"
 
 	"github.com/google/uuid"
 )
@@ -230,7 +231,37 @@ func (avatar Avatar) SaveAs(path string) error {
 	return os.WriteFile(path, []byte(avatar.SVG()), 0644)
 }
 
-// #region randomize
+// Type get avatar type
+func (avatar Avatar) Type() AvatarType {
+	return avatar._type
+}
+
+// Shape get avatar shape
+func (avatar Avatar) Shape() string {
+	return avatar.shape
+}
+
+// Palette get avatar palette
+func (avatar Avatar) Palette() string {
+	return avatar.palette
+}
+
+// Letter get avatar letter
+func (avatar Avatar) Letter() string {
+	return transformLetter(avatar.name)
+}
+
+// Type get avatar letter unicode
+func (avatar Avatar) LetterCode() rune {
+	r, _ := utf8.DecodeRuneInString(avatar.Letter())
+	return r
+}
+
+// Type get avatar letter unicode
+func (avatar Avatar) Sticker() string {
+	return avatar.sticker
+}
+
 // RandomizeShape randomize shape from registered ones
 func (avatar *Avatar) RandomizeShape(only ...string) *Avatar {
 	if len(only) == 0 {
@@ -487,5 +518,3 @@ func (avatar *Avatar) RandomizeAccessory(only ...string) *Avatar {
 	}
 	return avatar
 }
-
-// #endregion

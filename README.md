@@ -74,6 +74,30 @@ Get svg as base64 data image.
 
 Save svg file.
 
+### Type
+
+Get avatar type.
+
+### Shape
+
+Get avatar shape.
+
+### Palette
+
+Get avatar palette.
+
+### Letter
+
+Get avatar letter.
+
+### LetterCode
+
+Get avatar letter unicode.
+
+### Sticker
+
+Get avatar sticker name.
+
 ### Randomize Avatar Parameters
 
 You can pass list off registered parts to generate random avatar. If no parameters passed random character created from all registered values.
